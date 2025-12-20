@@ -1,1 +1,150 @@
-/* You can add global styles to this file, and also import other style files */
+/* ========================================
+   GLOBAL STYLES
+   File: styles.css
+   Shared across all components (Login, Signup, etc.)
+   ======================================== */
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Alternative gradient options - uncomment to use different color schemes */
+/* Option 2: Blue-Purple Gradient
+body {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+*/
+
+/* Option 3: Blue Gradient
+body {
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+}
+*/
+
+/* ========================================
+   CARD STYLES (Used by both Login & Signup)
+   ======================================== */
+.card {
+  background: #ffffff;
+  border: none;
+}
+
+/* ========================================
+   TEXT UTILITIES
+   ======================================== */
+.text-muted {
+  color: #6c757d !important;
+  font-size: 0.875rem; /* 14px - reduced for compact display */
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* ========================================
+   SPACING UTILITIES
+   Bootstrap-compatible spacing with optimized values
+   ======================================== */
+.mb-2 {
+  margin-bottom: 0.5rem !important; /* 8px */
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem !important; /* 12px - optimized for form fields */
+  transition: margin-bottom 0.3s ease; /* Smooth spacing adjustments */
+}
+
+.mb-4 {
+  margin-bottom: 1rem !important; /* 16px - compact subtitle spacing */
+}
+
+.mt-1 {
+  margin-top: 0.25rem !important; /* 4px - for error messages */
+}
+
+.mt-3 {
+  margin-top: 0.75rem !important; /* 12px - for submit button */
+}
+
+.mt-4 {
+  margin-top: 1rem !important; /* 16px - for login link */
+}
+
+/* ========================================
+   FORM ANIMATIONS
+   ======================================== */
+/* Shake animation for validation errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.form-control.ng-invalid.ng-touched {
+  animation: shake 0.3s ease;
+}
+
+/* ========================================
+   BUTTON STATES
+   ======================================== */
+.btn-primary:disabled {
+  position: relative;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 576px) {
+  /* Applies to both login-card and signup-card */
+  .signup-card,
+  .login-card {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .signup-title,
+  .login-title {
+    font-size: 1.375rem; /* 22px on mobile */
+  }
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR (Optional Enhancement)
+   ======================================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

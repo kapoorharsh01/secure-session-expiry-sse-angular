@@ -1,0 +1,34 @@
+<div class="dashboard-wrapper">
+  <div class="card dashboard-card">
+    <h2 class="text-center mb-3">
+      Welcome, <span class="user-highlight">{{ userName }}</span>
+    </h2>
+
+    <p class="text-muted text-center mb-4">Your session is active</p>
+
+    <div *ngIf="showWarning" class="alert alert-warning text-center mb-3">
+      <p>
+        Your session will expire in
+        <strong>{{ remainingSeconds }}</strong> seconds
+      </p>
+
+      <div class="d-flex justify-content-center gap-2">
+        <button class="btn btn-primary" (click)="extendSession()">
+          Extend Session
+        </button>
+
+        <button class="btn btn-outline-danger" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <button
+      *ngIf="!showWarning"
+      class="btn btn-primary w-100"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </div>
+</div>

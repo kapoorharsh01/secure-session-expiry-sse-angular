@@ -1,0 +1,12 @@
+export const environment = {
+  rsaPublicKey: `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsI/SWrIDyezgQgBzWgu1
+PgXk9Vxallg4PJusSFYg1hw50sG1HOXxJv1S5AjKfa6Qhnm6T7KfgEDrWEeS4oU5
+5gBYhizBYeh0Ij/+OrsqeHNJXLWxhTZi/o05l35EhFzgn164M/Xs1qEa+Mxmti3g
+cLdm7IFLRClxupwYjswpRWXAQ3l+s5RpUdTEunnKZv7MrPvwjC3KhGEvnJi7v4ac
+mkiqhhxudFBdIjMXGGF8NCX5o4SlUgoa4mRTZTvANFcGGs2KrjVZtd5A4LewFeOe
+cQCPGx37zCUSY8GldK7kbkBjEf2xDhf4UYzQ8jBa4IPwi3Lh5wBCAP930l+qTRHQ
+GwIDAQAB
+-----END PUBLIC KEY-----
+`
+};
