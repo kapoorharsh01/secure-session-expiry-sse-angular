@@ -12,10 +12,14 @@ export class CryptoService {
     this.encryptor.setPublicKey(environment.rsaPublicKey);
   }
 
-  encrypt(value: string): string | false {
-    const encrypted = this.encryptor.encrypt(value);
+  encrypt(value: any): string | false {
+    const json = JSON.stringify(value);
+    // console.log('Plaintext size:', json.length);
+    // console.log('Json type:', typeof(json));
+    const encrypted = this.encryptor.encrypt(json);
+    // console.log('encrypted as :', encrypted);
 
-    if (!encrypted) throw new Error('Encryption failed');
+    // if (!encrypted) throw new Error('Encryption failed');
 
     return encrypted;
   }

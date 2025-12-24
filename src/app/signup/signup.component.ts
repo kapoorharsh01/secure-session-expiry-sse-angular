@@ -27,14 +27,25 @@ export class SignupComponent {
   };
 
   async signup() {
+    // const payload = {
+    //   ...this.userForm,
+    //   fullName: this.cryptoService.encrypt(this.userForm.fullName),
+    //   mobile: this.cryptoService.encrypt(this.userForm.mobile),
+    //   email: this.cryptoService.encrypt(this.userForm.email),
+    //   password: await this.cryptoService.hashSHA256(this.userForm.password),
+    // };
+    //also try encrypting the whole object instead of individual values & add on provider or directive for global sse & debugger for deep analysis
+
     const payload = {
-      ...this.userForm,
-      fullName: this.cryptoService.encrypt(this.userForm.fullName),
-      mobile: this.cryptoService.encrypt(this.userForm.mobile),
-      email: this.cryptoService.encrypt(this.userForm.email),
+      data: this.cryptoService.encrypt({
+        fullName: this.userForm.fullName,
+        mobile: this.userForm.mobile,
+        email: this.userForm.email,
+      }),
+      dateOfBirth: this.userForm.dateOfBirth,
       password: await this.cryptoService.hashSHA256(this.userForm.password),
     };
-    //also try encrypting the whole object instead of individual values & add on provider or directive for global sse & debugger for deep analysis 
+    
 
     this.authService.signup(payload).subscribe({
       next: () => this.router.navigate(['login']),

@@ -9,9 +9,8 @@ export class SseService {
 
   start(
     onWarning: (seconds: number) => void, 
-    onExpired: () => void
-  )
-    {
+    onExpired: () => void) {
+      
     this.eventSource = new EventSource(this.url + '/events');
 
     this.eventSource.addEventListener('warning', (event: MessageEvent) => {
@@ -24,9 +23,7 @@ export class SseService {
     });
   }
 
-  stop(){
-    if(this.eventSource){
-      this.eventSource.close();
-    }
+  stop() {
+    this.eventSource?.close();
   }
 }

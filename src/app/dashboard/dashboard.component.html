@@ -1,4 +1,4 @@
-<div class="dashboard-wrapper">
+<div class="dashboard-wrapper" appSessionWatcher #session = "session">
   <div class="card dashboard-card">
     <h2 class="text-center mb-3">
       Welcome, <span class="user-highlight">{{ userName }}</span>
@@ -6,27 +6,27 @@
 
     <p class="text-muted text-center mb-4">Your session is active</p>
 
-    <div *ngIf="showWarning" class="alert alert-warning text-center mb-3">
+    <div *ngIf="session.showWarning" class="alert alert-warning text-center mb-3">
       <p>
         Your session will expire in
-        <strong>{{ remainingSeconds }}</strong> seconds
+        <strong>{{ session.remainingSeconds }}</strong> seconds
       </p>
 
       <div class="d-flex justify-content-center gap-2">
-        <button class="btn btn-primary" (click)="extendSession()">
+        <button class="btn btn-primary" (click)="session.extendSession()">
           Extend Session
         </button>
 
-        <button class="btn btn-outline-danger" (click)="logout()">
+        <button class="btn btn-outline-danger" (click)="session.logout()">
           Logout
         </button>
       </div>
     </div>
 
     <button
-      *ngIf="!showWarning"
+      *ngIf="!session.showWarning"
       class="btn btn-primary w-100"
-      (click)="logout()"
+      (click)="session.logout()"
     >
       Logout
     </button>

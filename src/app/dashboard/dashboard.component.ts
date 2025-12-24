@@ -3,42 +3,43 @@ import { Router } from '@angular/router';
 import { SseService } from '../services/sse.service';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../services/auth.service';
+import { SessionWatcherDirective } from '../directives/session-watcher.directive';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [NgIf],
+  imports: [NgIf, SessionWatcherDirective],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
   userName = '';
-  showWarning = false;
-  remainingSeconds = 0;
+  // showWarning = false;
+  // remainingSeconds = 0;
   // private autoLogoutTimer: any;
 
-  constructor(
-    private router: Router,
-    private sseService: SseService,
-    private authService: AuthService
-  ) {}
+  // constructor(
+  //   private router: Router,
+  //   private sseService: SseService,
+  //   private authService: AuthService
+  // ) {}
 
   ngOnInit() {
     this.userName = localStorage.getItem('userName') || '';
-    this.startListening();
+    // this.startListening();
   }
 
-  startListening() {
-    this.sseService.start(
-      (seconds) => this.handleWarning(seconds),
-      () => this.handleExpired()
+  // startListening() {
+  //   this.sseService.start(
+  //     (seconds) => this.handleWarning(seconds),
+  //     () => this.handleExpired()
 // This is NOT executed here.
 
 // It is just:
 // A function value
 // Stored in memory
 // Like assigning a variable
-    );
-  }
+  //   );
+  // }
 
 // Multiple independent calls
 // Triggered by SSE
@@ -48,13 +49,13 @@ export class DashboardComponent {
 // Runs once per SSE message
 // Finishes
 // Then waits for the next event
-  handleWarning(seconds: number) {
-    (this.remainingSeconds = seconds),
-      (this.showWarning = true)
+  // handleWarning(seconds: number) {
+  //   (this.remainingSeconds = seconds),
+  //     (this.showWarning = true)
 
       // just in case 'expired' event isn't being sent, so after 10 sec from frontend, when backend sends last 1 second this will autologout
       // this.startFailsafe();
-  }
+  // }
 
 
 
@@ -81,25 +82,25 @@ export class DashboardComponent {
 // autoLogoutTimer = 12;
 // }
 
-  handleExpired() {
+  // handleExpired() {
     // we can skip this, added just for defensive approach in case Browser pauses timers
-    this.logout();
-  }
+    // this.logout();
+  // }
 
-  extendSession() {
-    this.authService.extendSession().subscribe(() => {
-      this.showWarning = false;
-      // clearTimeout(this.autoLogoutTimer);
-    });
-  }
+  // extendSession() {
+  //   this.authService.extendSession().subscribe(() => {
+  //     this.showWarning = false;
+  //     // clearTimeout(this.autoLogoutTimer);
+  //   });
+  // }
 
-  logout() {
-    this.sseService.stop();
+  // logout() {
+  //   this.sseService.stop();
     // console.log(this.autoLogoutTimer);
     // clearTimeout(this.autoLogoutTimer);
-    localStorage.clear();
-    this.router.navigate(['/login']);
-  }
+  //   localStorage.clear();
+  //   this.router.navigate(['/login']);
+  // }
 
   // ngOnDestroy() {
   //   this.logout();
