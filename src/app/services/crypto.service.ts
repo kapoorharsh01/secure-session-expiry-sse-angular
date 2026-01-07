@@ -14,8 +14,11 @@ export class CryptoService {
 
   encrypt(value: any): string | false {
     const json = JSON.stringify(value);
+
     // console.log('Plaintext size:', json.length);
     // console.log('Json type:', typeof(json));
+    // console.log('Json:', json);
+
     const encrypted = this.encryptor.encrypt(json);
     // console.log('encrypted as :', encrypted);
 
